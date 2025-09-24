@@ -1,0 +1,100 @@
+/* 3045 neon-glass theme */
+:root{
+  --bg:#030417;
+  --glass: rgba(255,255,255,0.03);
+  --neon1:#6ef2ff;
+  --neon2:#b66dff;
+  --muted: rgba(255,255,255,0.36);
+  --card-bg: linear-gradient(180deg, rgba(255,255,255,0.015), rgba(255,255,255,0.008));
+  --radius:14px;
+  --fw: 500;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;color:#fff;background:var(--bg);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+a{color:inherit;text-decoration:none}
+.small{font-size:12px;color:var(--muted)}
+
+/* ambient */
+.ambient{position:fixed;inset:0;z-index:0;pointer-events:none}
+.nebula{position:absolute;inset:0;background:
+  radial-gradient(600px 300px at 10% 20%, rgba(110,242,255,0.035), transparent),
+  radial-gradient(500px 280px at 90% 80%, rgba(182,109,255,0.03), transparent);
+  mix-blend-mode:screen;filter:blur(12px) saturate(1.05);transform:translateZ(0)}
+canvas#particles{position:absolute;inset:0;display:block;opacity:0.9}
+
+/* stage center */
+.stage{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:28px;position:relative;z-index:1}
+.holo-card{width:min(1100px,96%);border-radius:18px;padding:20px;background:var(--card-bg);border:1px solid rgba(255,255,255,0.04);box-shadow:0 30px 80px rgba(0,0,0,0.6);backdrop-filter:blur(14px) saturate(1.05);display:flex;flex-direction:column;gap:12px;overflow:hidden}
+
+/* header */
+.holo-header{display:flex;justify-content:space-between;align-items:center}
+.holo-logo{display:flex;align-items:center;gap:10px}
+.holo-actions{display:flex;gap:10px}
+.btn{background:transparent;border:1px solid rgba(255,255,255,0.03);padding:8px;border-radius:10px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center}
+.btn.holo{backdrop-filter: blur(8px);box-shadow:0 6px 20px rgba(0,0,0,0.5)}
+.btn.primary{background:linear-gradient(90deg,var(--neon1),var(--neon2));color:#021;border:none;padding:10px 14px}
+.btn.ghost{border:1px solid rgba(255,255,255,0.06);color:var(--muted)}
+
+/* content initial */
+.welcome{display:flex;flex-direction:column;align-items:center;gap:14px;padding:36px}
+.polylight{width:260px;height:8px;border-radius:6px;background:linear-gradient(90deg,var(--neon1),var(--neon2));filter:blur(8px)}
+.hint{color:var(--muted);letter-spacing:2px;text-transform:uppercase;font-size:13px}
+
+/* sections hidden until interaction */
+.hidden{display:none}
+
+/* sections layout */
+.sections{padding:18px 14px 6px;display:flex;flex-direction:column;gap:30px}
+.section{padding:18px;background:transparent;border-radius:12px}
+.title{font-size:28px;letter-spacing:0.6px;}
+.subtitle{color:var(--muted);margin-top:8px}
+
+/* about grid */
+.about-grid{display:grid;grid-template-columns:320px 1fr;gap:18px;align-items:center}
+.holo-frame{width:100%;height:180px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02));border-radius:12px;stroke:rgba(255,255,255,0.03);}
+
+/* skills */
+.skills-grid{display:flex;gap:10px;flex-wrap:wrap}
+.skills-grid span{padding:10px 12px;border-radius:12px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.03);font-weight:600}
+
+/* why grid */
+.why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.card{padding:16px;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.012), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.03)}
+
+/* portfolio */
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.filters button{padding:8px 12px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);background:transparent;cursor:pointer}
+.filters .active{background:linear-gradient(90deg,var(--neon1),var(--neon2));color:#021;border:none}
+
+.portfolio-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.portfolio-grid .item{height:160px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.008));display:flex;flex-direction:column;justify-content:flex-end;padding:12px;cursor:pointer;transition:transform .28s ease,box-shadow .28s}
+.portfolio-grid .item:hover{transform:translateY(-8px);box-shadow:0 20px 60px rgba(0,0,0,0.6)}
+
+/* forms */
+.form{display:flex;flex-direction:column;gap:10px;max-width:840px}
+.form input,.form textarea{padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:rgba(0,0,0,0.3);color:#fff;resize:vertical}
+.form .inline{display:flex;gap:10px;align-items:center}
+.form-cta{display:flex;gap:10px;align-items:center}
+
+/* testimonials */
+.test-grid{display:flex;gap:12px;flex-wrap:wrap}
+.test-grid .test{padding:12px;border-radius:10px;background:rgba(255,255,255,0.02);max-width:320px}
+
+/* footer */
+.holo-footer{display:flex;justify-content:space-between;align-items:center;padding-top:8px;border-top:1px dashed rgba(255,255,255,0.02);color:var(--muted)}
+
+/* back-top */
+.back-top{position:fixed;right:20px;bottom:20px;border-radius:50%;padding:10px;border:1px solid rgba(255,255,255,0.04);background:rgba(0,0,0,0.35);cursor:pointer;display:none}
+
+/* responsive */
+@media (max-width:900px){
+  .about-grid{grid-template-columns:1fr}
+  .why-grid{grid-template-columns:repeat(2,1fr)}
+  .portfolio-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:540px){
+  .portfolio-grid{grid-template-columns:repeat(1,1fr)}
+  .holo-header{flex-direction:row;gap:8px}
+  .btn{padding:8px}
+}
