@@ -1,7 +1,0 @@
-{
-  "name": "real1editor-3045",
-  "version": "1.0.0",
-  "type": "module",
-  "scripts": { "dev": "vercel dev" },
-  "dependencies": { "node-fetch": "^3.4.0" }
-}
