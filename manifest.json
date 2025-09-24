@@ -1,0 +1,12 @@
+{
+  "name": "Real1Editor 3045",
+  "short_name": "Real1Editor",
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#030417",
+  "background_color": "#030417",
+  "icons": [
+    {"src":"/assets/icon-192.png","sizes":"192x192","type":"image/png"},
+    {"src":"/assets/icon-512.png","sizes":"512x512","type":"image/png"}
+  ]
+}
