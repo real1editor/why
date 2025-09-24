@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Real1Editor — 3045 Holo Portfolio</title>
+  <meta name="description" content="Real1Editor — Futuristic video editing portfolio (3045 holographic UI).">
+  <meta name="theme-color" content="#030417"/>
+  <link rel="manifest" href="/manifest.json">
+  <link rel="stylesheet" href="style.css">
+  <!-- Telegram Web Apps SDK -->
+  <script async src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body>
+  <!-- Ambient stage -->
+  <div id="ambient" class="ambient">
+    <canvas id="particles"></canvas>
+    <div id="nebula" class="nebula"></div>
+  </div>
+
+  <!-- Holo card  -->
+  <main id="stage" class="stage" aria-live="polite">
+    <div class="holo-card" role="region" aria-label="Real1Editor holographic card" tabindex="0">
+      <header class="holo-header">
+        <div id="holoLogo" class="holo-logo" aria-hidden="true">
+          <!-- small neon logo -->
+          <svg width="56" height="56" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+            <defs><linearGradient id="g" x1="0" x2="1"><stop offset="0" stop-color="#6ef2ff"/><stop offset="1" stop-color="#b66dff"/></linearGradient></defs>
+            <rect x="2" y="2" width="60" height="60" rx="12" stroke="url(#g)" stroke-width="1.6" fill="rgba(255,255,255,0.02)"/>
+            <path d="M18 44 L28 28 L38 44" stroke="url(#g)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+
+        <div class="holo-actions">
+          <button id="micBtn" class="btn holo" aria-pressed="false" title="Voice control (speak)">
+            <svg viewBox="0 0 24 24" class="icon"><path d="M12 15a3 3 0 0 0 3-3V6a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3z"/><path d="M19 11v1a7 7 0 0 1-14 0v-1" /></svg>
+          </button>
+
+          <button id="neuroBtn" class="btn holo subtle" title="Neural simulate">
+            <svg viewBox="0 0 24 24" class="icon"><path d="M12 2v20M2 12h20" /></svg>
+          </button>
+
+          <button id="openBot" class="btn holo" title="Open Telegram Bot">
+            <svg viewBox="0 0 24 24" class="icon"><path d="M22 2L11 13" /><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+          </button>
+        </div>
+      </header>
+
+      <section id="content" class="content">
+        <!-- zero textual content until user interacts -->
+        <div id="welcome" class="welcome">
+          <div class="polylight"></div>
+          <div class="hint">Tap • Speak • Think</div>
+        </div>
+
+        <!-- Sections: hidden until revealed -->
+        <nav id="nav" class="nav hidden" aria-hidden="true">
+          <a href="#home" data-scroll>Home</a>
+          <a href="#about" data-scroll>About</a>
+          <a href="#skills" data-scroll>Skills</a>
+          <a href="#why" data-scroll>Why</a>
+          <a href="#portfolio" data-scroll>Portfolio</a>
+          <a href="#services" data-scroll>Services</a>
+          <a href="#testimonials" data-scroll>Testimonials</a>
+          <a href="#contact" data-scroll>Contact</a>
+        </nav>
+
+        <div id="sections" class="sections hidden" aria-hidden="true">
+          <!-- HOME / HERO -->
+          <section id="home" class="section hero">
+            <h1 class="title">Transforming Visions into <span>3045 Cinematic Reality</span></h1>
+            <p class="subtitle">Elite Video Editing • Holographic Storytelling</p>
+            <div class="hero-ctas">
+              <button class="cta" data-scroll-to="#portfolio">Explore Portfolio</button>
+              <button class="cta ghost" id="hireBtn">Get Started</button>
+            </div>
+          </section>
+
+          <!-- ABOUT -->
+          <section id="about" class="section about">
+            <h2>About</h2>
+            <p class="muted">I craft cinematic narratives with precision, color, and motion — making content that feels alive.</p>
+            <div class="about-grid">
+              <div class="about-image" aria-hidden>
+                <!-- subtle hologram image placeholder -->
+                <svg viewBox="0 0 400 240" class="holo-frame"><rect width="100%" height="100%" rx="12"/></svg>
+              </div>
+              <div class="about-bio">
+                <p>8+ years producing content for creators, brands, and storytellers. Specialties: cuts, grade, motion, and viral short formats.</p>
+                <div class="chips">
+                  <span>Premiere Pro</span><span>After Effects</span><span>DaVinci</span>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- SKILLS -->
+          <section id="skills" class="section skills">
+            <h2>Skills</h2>
+            <div class="skills-grid" id="skillsGrid"></div>
+          </section>
+
+          <!-- WHY CHOOSE ME -->
+          <section id="why" class="section why">
+            <h2>Why Choose Me</h2>
+            <div class="why-grid">
+              <div class="card"><strong>Speed</strong><span>Fast, reliable delivery</span></div>
+              <div class="card"><strong>Quality</strong><span>Broadcast-grade finish</span></div>
+              <div class="card"><strong>Creativity</strong><span>Unique storytelling</span></div>
+              <div class="card"><strong>Support</strong><span>Clear revisions & communication</span></div>
+            </div>
+          </section>
+
+          <!-- PORTFOLIO -->
+          <section id="portfolio" class="section portfolio">
+            <h2>Portfolio</h2>
+            <div class="filters">
+              <button data-filter="all" class="active">All</button>
+              <button data-filter="youtube">YouTube</button>
+              <button data-filter="tiktok">TikTok</button>
+              <button data-filter="commercial">Commercial</button>
+            </div>
+            <div id="portfolioGrid" class="portfolio-grid" aria-live="polite"></div>
+          </section>
+
+          <!-- SERVICES -->
+          <section id="services" class="section services">
+            <h2>Services</h2>
+            <ul class="services-list">
+              <li>Full Video Editing — narrative & ads</li>
+              <li>Color Grading & LUTs</li>
+              <li>Motion Graphics & Titles</li>
+            </ul>
+          </section>
+
+          <!-- TESTIMONIALS -->
+          <section id="testimonials" class="section testimonials">
+            <h2>Testimonials</h2>
+            <div class="test-grid" id="testGrid"></div>
+          </section>
+
+          <!-- CONTACT -->
+          <section id="contact" class="section contact">
+            <h2>Get in Touch</h2>
+            <form id="contactForm" class="form">
+              <input name="name" placeholder="Name" required/>
+              <input name="email" type="email" placeholder="Email" required/>
+              <textarea name="project" placeholder="Project brief"></textarea>
+              <div class="form-cta">
+                <button type="submit" class="btn primary">Send</button>
+                <button type="button" id="openTelegramBtn" class="btn ghost">Message on Telegram</button>
+              </div>
+            </form>
+
+            <div class="contact-quick">
+              <a href="https://t.me/Real1editorBot" target="_blank" rel="noopener">Telegram Bot</a>
+              <a href="mailto:real1editor@gmail.com">real1editor@gmail.com</a>
+              <a href="tel:+251947758994">+251 94 775 8994</a>
+              <small>Addis Ababa, Ethiopia</small>
+            </div>
+          </section>
+
+          <!-- FEEDBACK -->
+          <section id="feedback" class="section feedback">
+            <h2>Feedback & Suggestions</h2>
+            <form id="feedbackForm" class="form">
+              <input name="fb_name" placeholder="Name (optional)"/>
+              <input name="fb_email" placeholder="Email (optional)"/>
+              <textarea name="fb_message" placeholder="Your feedback"></textarea>
+              <button type="submit" class="btn primary">Send Feedback</button>
+            </form>
+          </section>
+
+          <!-- NEWSLETTER -->
+          <section id="newsletter" class="section newsletter">
+            <h2>Subscribe</h2>
+            <form id="newsletterForm" class="form inline">
+              <input name="newsletter_email" type="email" placeholder="Your email" required/>
+              <button class="btn primary">Subscribe</button>
+            </form>
+          </section>
+        </div>
+
+        <footer class="holo-footer">
+          <div class="left small">© 3045 Real1Editor</div>
+          <div class="right small">
+            <a id="linkUpwork" href="https://www.upwork.com/freelancers/~01a6fc21cc80922abf" target="_blank" rel="noopener">Upwork</a>
+            <a href="https://youtube.com/@real1editor" target="_blank" rel="noopener">YouTube</a>
+            <a href="https://www.tiktok.com/@real1editor" target="_blank" rel="noopener">TikTok</a>
+            <a href="https://linktr.ee/real1editor" target="_blank" rel="noopener">Link</a>
+          </div>
+        </footer>
+
+      </section>
+    </div>
+  </main>
+
+  <!-- Back to top -->
+  <button id="backTop" class="back-top" title="Back to top">⬆</button>
+
+  <!-- JS -->
+  <script src="app.js" defer></script>
+  <script src="telegram.js" defer></script>
+</body>
+</html>
